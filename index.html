@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>CryptoMillions</title>
+	<title>CryptoLogic</title>
+	<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+	<link rel="stylesheet" href="main.css">
 </head>
-
 <body>
-    <div class="banner">
-        <div class="bannerDiv">Crypto Millions</div>
-    </div>
+	<nav class="navbar">
+		<ul class="navbar-list">	
+			<li class="badge">
+				<a href="index.html">CryptoLogic</a>
+			</li>		
+			<li class="navbar-list-item1">
+				<a href="https://www.youtube.com/watch?v=R8y6DJAeolo">Money.</a>
+			</li>
+			<li class="navbar-list-item2">
+				<a href="https://www.youtube.com/watch?v=R8y6DJAeolo">Is.</a>
+			</li>
+			<li class="navbar-list-item3">
+				<a href="https://www.youtube.com/watch?v=R8y6DJAeolo">Good.</a>
+			</li>
+		</ul>
+	</nav>
 
+	<main>
+		<header>
+			<div class="header-box">
+				<h1>CryptoLogic</h1>
+				<h3>Where bitDreams Become bitMoons</h3>
+			</div>
+		</header>
 
-    <div class="collection">
-        <div class="item item0" id="0"></div>
-        <div class="item item1" id="1"></div>
-        <div class="item item2" id="2"></div>
-        <div class="item item3" id="3"></div>
-        <div class="item item4" id="4"></div>
-        <div class="item item5" id="5"></div>
-        <div class="item item6" id="6"></div>
-        <div class="item item7" id="7"></div>
-        <div class="item item8" id="8"></div>
-        <div class="item item9" id="9"></div>
-        <div class="item item10" id="10"></div>
-        <div class="item item11" id="11"></div>
-        <div class="item item12" id="12"></div>
-        <div class="item item13" id="13"></div>
-        <div class="item item14" id="14"></div>
-        <div class="item item15" id="15"></div>
-        
-    </div>
+		<div class="coin-data">
+			<ul class="currencies">
+			</ul>
+		</div>
 
-    <style>
+		<div class="chart">
+			<canvas id="myChart"></canvas>
+		</div>
 
-    
-    </style>
-
-    <script src="index.js"></script>
+	</main>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="script.js"></script>
 
 </html>
