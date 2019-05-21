@@ -1,3 +1,3 @@
 # crypt-api-exercise
 
-<!-- ![](CryptoLogic.gif) -->
+![](CryptoLogic.gif)
