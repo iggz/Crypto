@@ -4,7 +4,7 @@
 /* API urls */
 /************/
 
-const coinlore = "https://api.coinlore.com/api/tickers/?start=0&limit=100";
+const coinlore = "https://api.coinlore.com/api/tickers/?start=0&limit=150";
 const coincap = "https://api.coincap.io/v2/assets/bitcoin-cash-sv/history?interval=m15";
 
 /***********/
