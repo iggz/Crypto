@@ -20,6 +20,7 @@ function get(url) {
 	return fetch(url)
 		.then(response => {
 			// render the response as json
+
 			return response.json();
 		})
 		.then(data => {
@@ -33,12 +34,12 @@ function get(url) {
 
 function loadCoinData(url) {
 	get(url)
-	.then(response => {
-		// then add each coin to the grid
-		response.data.forEach(coin => {
-			addCoin(coin);
-		})
-	});
+		.then(response => {
+			// then add each coin to the grid
+			response.data.forEach(coin => {
+				addCoin(coin);
+			})
+		});
 }
 
 function addCoin(coin) {
@@ -67,7 +68,7 @@ function addCoin(coin) {
 		style: 'percent',
 		minimumFractionDigits: 2
 	})
-	const percentChangeDay = "24h % Change: " + formatterPercentChangeDay.format((coin.percent_change_24h)/100);
+	const percentChangeDay = "24h % Change: " + formatterPercentChangeDay.format((coin.percent_change_24h) / 100);
 
 	// function to format the market price to not have decimal points
 	const formatterMarketCap = new Intl.NumberFormat('en-US', {
@@ -90,11 +91,11 @@ function addCoin(coin) {
 		if (!ifClicked) {
 			loadCoinPrices(name.toLowerCase(), name);
 			// update click boolean
-			ifClicked = true;	
+			ifClicked = true;
 		}
 	});
 	// add in the data to the sub list
-	for (let i=0; i<dataArray.length; i++) {
+	for (let i = 0; i < dataArray.length; i++) {
 		// use a list item element to hold the data
 		const subItem = document.createElement("li");
 		// add in the data to the sub list
@@ -123,45 +124,45 @@ function loadCoinPrices(id, name) {
 	}
 	const url = `https://api.coincap.io/v2/assets/${id}/history?interval=m15`;
 	get(url)
-	.then(response => {
-		// log out the status of the response
-		const prices = [];
-		const dates = [];
-		const times = []; 
-		let count = 0;
-		// now, the prices are stored in an array of objects
-		response.data.forEach(price => {
-			// get the current price
-			const priceUSD = price.priceUsd;
-			// extract the date & time
-			const datestring = price.date;
-			const dateAndTime = datestring.split("T");
-			const day = dateAndTime[0];
-			const time = dateAndTime[1].substr(0,5);
-			// add it to the price, date & time arrays
-			if (count % 16 == 0) {
-				// but only if it's every 16th element...
-				prices.push(priceUSD);
-				dates.push(day);
-				times.push(time);
-			}
-			// bump up the count
-			count++;
+		.then(response => {
+			// log out the status of the response
+			const prices[0] =[];
+			const dates = [];
+			const times = [];
+			let count = 0;
+			// now, the prices are stored in an array of objects
+			response.data.forEach(price => {
+				// get the current price
+				const priceUSD = price.priceUsd;
+				// extract the date & time
+				const datestring = price.date;
+				const dateAndTime = datestring.split("T");
+				const day = dateAndTime[0];
+				const time = dateAndTime[1].substr(0, 5);
+				// add it to the price, date & time arrays
+				if (count % 16 == 0) {
+					// but only if it's every 16th element...
+					prices.push(priceUSD);
+					dates.push(day);
+					times.push(time);
+				}
+				// bump up the count
+				count++;
+			})
+			return [prices, dates, times];
 		})
-		return [prices, dates, times];
-	})
-	.then(arr => {
-		buildChart(arr[0], arr[1], arr[2], name);
-	});
+		.then(arr => {
+			buildChart(arr[0], arr[1], arr[2], name);
+		});
 }
 
 function buildChart(prices, dates, times, name) {
 	/* build out a price chart, where each parameter is an array */
 	const dateAndTimes = []; // declare/init new labels array
 	// loop over the dates array
-	for (let i=0; i<dates.length; i++) {
+	for (let i = 0; i < dates.length; i++) {
 		// grab each 6th date
-		if (i%6 == 0) {
+		if (i % 6 == 0) {
 			// append to new labels array
 			dateAndTimes.push(dates[i]);
 		} else {
@@ -171,7 +172,7 @@ function buildChart(prices, dates, times, name) {
 	}
 
 	const prettyPrices = []; // declare/init container for formatted prices
-	for (let i=0; i<prices.length; i++) {
+	for (let i = 0; i < prices.length; i++) {
 		// parse string as float, rounding off to hundredths place
 		prettyPrices.push(parseFloat(prices[i]).toFixed(2));
 	}
@@ -193,14 +194,14 @@ function buildChart(prices, dates, times, name) {
 				label: name,
 				// style the border
 				borderColor: "white",
-				
+
 				// borderColor: "rgb(255, 99, 132)",
 				// add in the data as an array
 				data: prettyPrices
-				
+
 			}]
 		},
-		
+
 		// lastly, configure the options
 		options: {
 			legend: {
