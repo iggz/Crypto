@@ -126,7 +126,7 @@ function loadCoinPrices(id, name) {
 	get(url)
 		.then(response => {
 			// log out the status of the response
-			const prices[0] =[];
+			const prices = [];
 			const dates = [];
 			const times = [];
 			let count = 0;
